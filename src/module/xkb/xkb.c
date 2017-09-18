@@ -202,7 +202,7 @@ static char* FcitxXkbFindXkbRulesFile(FcitxXkb* xkb)
         } else {
             int count = 0, i = 0;
             const char* base = XLIBDIR;
-			FcitxLog(FCITX_INFO, "MATT %s", base);
+			FcitxLog(INFO, "MATT %s", base);
             char *parent_to_free = NULL;
             while (base[i]) {
                 if (base[i] == '/')
@@ -242,7 +242,8 @@ static char* FcitxXkbFindXkbRulesFile(FcitxXkb* xkb)
                 parent_to_free = tmp;
             } else {
                 // last fallback for known rules name.
-                parent_path = "/usr/share/X11";
+                /* parent_path = "/usr/share/X11"; */
+                parent_path = "/home/teto/.nix-profile/share/X11";
             }
             fcitx_utils_alloc_cat_str(rulesFile, parent_path,
                                       "/xkb/rules/", rulesName, ".xml");
@@ -252,6 +253,8 @@ static char* FcitxXkbFindXkbRulesFile(FcitxXkb* xkb)
     } else {
         return strdup(XKB_RULES_XML_FILE);
     }
+
+	FcitxLog(INFO, "rulesFiles set to '%s'", rulesFile);
     return rulesFile;
 }
 
