@@ -202,6 +202,7 @@ static char* FcitxXkbFindXkbRulesFile(FcitxXkb* xkb)
         } else {
             int count = 0, i = 0;
             const char* base = XLIBDIR;
+			FcitxLog(FCITX_INFO, "MATT %s", base);
             char *parent_to_free = NULL;
             while (base[i]) {
                 if (base[i] == '/')
